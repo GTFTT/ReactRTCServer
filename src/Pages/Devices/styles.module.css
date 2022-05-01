@@ -1,7 +1,11 @@
 .container {
-    width: 100%;
+  width: 100%;
 }
 
 .deviceCode {
-    width: 20vw;
+  width: 20vw;
+}
+
+.createButton {
+  margin-top: 10px;
 }

@@ -1,10 +1,11 @@
 .container {
-    border: 0.1rem solid black;
-    border-radius: 0.2rem;
-    width: 100%;
-    margin: 0.1rem 0rem;
-    padding: 0.15rem;
+  border: 0.1rem solid black;
+  border-radius: 0.2rem;
+  width: 100%;
+  margin: 0.1rem 0rem;
+  padding: 0.15rem;
 
-    background: linear-gradient(180deg, #363636 0%, #191919 100%);
-    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, #363636 0%, #191919 100%);
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
