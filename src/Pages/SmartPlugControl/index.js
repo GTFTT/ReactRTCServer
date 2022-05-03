@@ -13,7 +13,6 @@ import { connect } from "react-redux";
 import { fetchAPI } from "utils";
 import Block from "../../Components/Block";
 import SpanBlock from "../../Components/SpanBlock";
-import Modal from "../../Components/Modal";
 import DeviceParameterModal from "../../Modals/DeviceParameterModal/DeviceParameterModal";
 
 export const COLORS = {

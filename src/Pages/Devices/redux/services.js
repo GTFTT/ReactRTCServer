@@ -21,3 +21,13 @@ export const getDeviceParametersService = async (id) => {
   });
   return resp;
 };
+
+export const createParameterService = async (id, data) => {
+  const resp = await fetchAPI("PUT", `/devices/${id}/createParameter`, data);
+  return resp;
+};
+
+export const updateParameterService = async (id, data) => {
+  const resp = await fetchAPI("POST", `/updateDeviceParameter/${id}`, data);
+  return resp;
+};
