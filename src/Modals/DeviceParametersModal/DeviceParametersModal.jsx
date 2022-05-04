@@ -8,24 +8,34 @@ import {
   MenuItem,
   Typography,
   Select,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import {
-  createDeviceAction,
-  updateDeviceAction,
+  createParameterAction,
+  selectDevicesLoading,
+  selectEditDevice,
+  updateParameterAction,
 } from "Pages/Devices/redux/duck";
 import { bool, func, any } from "prop-types";
 import { useEffect } from "react";
 // import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "reselect";
 import { Button, Input } from "rtc-ui-library";
 import { defaultValues, valueTypes } from "./DeviceParametersModal.constants";
 import { validationSchema } from "./DeviceParametersModal.validations";
 
+const selector = createSelector(
+  selectDevicesLoading,
+  selectEditDevice,
+  (loading, device) => ({ loading, device })
+);
+
 const DeviceParametersModal = ({ isOpen, handleClose, editParameter }) => {
-  const currentUser = useSelector(({ common }) => common.user.user);
-  const loading = useSelector(({ devices }) => devices.loading);
+  const { loading, device } = useSelector(selector);
 
   const dispatch = useDispatch();
   const { control, handleSubmit, reset } = useForm({
@@ -37,17 +47,17 @@ const DeviceParametersModal = ({ isOpen, handleClose, editParameter }) => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
-    const { id, userID, ...uploadData } = data;
-    // if (data.id)
-    //   return dispatch(updateDeviceAction(uploadData, data.id, handleClose));
-    // dispatch(
-    //   createDeviceAction({ ...data, userID: currentUser.id }, handleClose)
-    // );
+    const { id, deviceID, ...uploadData } = data;
+    // dispatch(createParameterAction(uploadData, device.id, handleClose));
+    if (data.id)
+      return dispatch(
+        updateParameterAction(uploadData, data.id, device.id, handleClose)
+      );
+    dispatch(createParameterAction(uploadData, device.id, handleClose));
   };
 
   useEffect(() => {
-    if (!isOpen) reset({ ...defaultValues, ...editParameter });
+    reset({ ...defaultValues, ...editParameter });
   }, [isOpen, reset, editParameter]);
 
   return (
@@ -93,16 +103,55 @@ const DeviceParametersModal = ({ isOpen, handleClose, editParameter }) => {
 
             <Controller
               render={({ field, fieldState: { error } }) => (
-                <Select error={!!error} {...field}>
-                  {valueTypes.map((type) => (
-                    <MenuItem key={type} value={type}>
-                      {type}
-                    </MenuItem>
-                  ))}
-                  <MenuItem value={"tye"}>tyes </MenuItem>
-                </Select>
+                <FormControl size="small">
+                  <InputLabel
+                    sx={{ color: "#c1f4ff!important" }}
+                    id="type-select"
+                  >
+                    Type
+                  </InputLabel>
+                  <Select
+                    labelId="type-select"
+                    label="Type"
+                    size="small"
+                    error={!!error}
+                    {...field}
+                  >
+                    {valueTypes.map((type) => (
+                      <MenuItem key={type} value={type}>
+                        {type}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               )}
               name="type"
+              control={control}
+            />
+            <Controller
+              render={({ field, fieldState: { error } }) => (
+                <Input
+                  fullWidth
+                  label="Description"
+                  error={!!error}
+                  helperText={error?.message}
+                  {...field}
+                />
+              )}
+              name="description"
+              control={control}
+            />
+            <Controller
+              render={({ field, fieldState: { error } }) => (
+                <Input
+                  fullWidth
+                  label="Name"
+                  error={!!error}
+                  helperText={error?.message}
+                  {...field}
+                />
+              )}
+              name="name"
               control={control}
             />
           </Box>

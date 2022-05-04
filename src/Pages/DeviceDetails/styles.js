@@ -44,6 +44,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
+    alignItems: "center",
   },
 
   parameterDataContainer: {

@@ -37,6 +37,8 @@ const DeviceDetails = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [deviceModalOpen, setDeviceModalOpen] = useState(false);
+  const [editParameter, setEditParameter] = useState(null);
+
   const [parametersModalOpen, setParametersModalOpen] = useState(false);
 
   useEffect(() => {
@@ -54,7 +56,11 @@ const DeviceDetails = () => {
       />
       <DeviceParametersModal
         isOpen={parametersModalOpen}
-        handleClose={() => setParametersModalOpen(false)}
+        handleClose={() => {
+          setParametersModalOpen(false);
+          setEditParameter(null);
+        }}
+        editParameter={editParameter}
       />
       <Loader isLoading={loading} />
       <Box className={classes.title}>
@@ -162,49 +168,38 @@ const DeviceDetails = () => {
               </div>
             </Block>
           </div>
-
-          {/* <DeviceParameterModal
-            buttonText={"EDIT"}
-            parameterID={parameter.id}
-            onUpdate={() => {
-              const currentDeviceID = this.props.match.params.id;
-              this.props.fetchSmartPlug(currentDeviceID);
+          <Button
+            onClick={() => {
+              setParametersModalOpen(true);
+              setEditParameter(parameter);
             }}
-          /> */}
-          <div className={classes.parameterDeleteButton}>
-            <Button
-              onClick={() => {
-                // Hardcoded
-                // eslint-disable-next-line no-restricted-globals
-                const result = confirm("Are you sure you want ot delete?");
-                if (result) {
-                  fetchAPI("DELETE", "/deleteDeviceParameter/" + parameter.id)
-                    .then(async () => {
-                      this.props.fetchSmartPlug(this.state.currentDeviceID);
-                    })
-                    .catch((e) => {
-                      console.error(e);
-                    });
-                }
-              }}
-            >
-              DEL
-            </Button>
-          </div>
+          >
+            EDIT
+          </Button>
+          <Button
+            onClick={() => {
+              // Hardcoded
+              // eslint-disable-next-line no-restricted-globals
+              const result = confirm("Are you sure you want ot delete?");
+              if (result) {
+                fetchAPI("DELETE", "/deleteDeviceParameter/" + parameter.id)
+                  .then(async () => {
+                    this.props.fetchSmartPlug(this.state.currentDeviceID);
+                  })
+                  .catch((e) => {
+                    console.error(e);
+                  });
+              }
+            }}
+          >
+            DEL
+          </Button>
         </div>
       ))}
 
       <Button onClick={() => setParametersModalOpen(true)}>
         Create parameter
       </Button>
-      {/* <DeviceParameterModal
-        buttonText={"CREATE"}
-        mode={"CREATE"}
-        deviceID={this.state.currentDeviceID}
-        onCreate={() => {
-          this.props.fetchSmartPlug(this.state.currentDeviceID);
-        }}
-      /> */}
     </Box>
   );
 };
