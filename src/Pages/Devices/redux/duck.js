@@ -1,3 +1,5 @@
+import { updateParameterService } from "./services";
+import { createParameterService } from "./services";
 import {
   createDeviceService,
   getDeviceByIdService,
@@ -151,6 +153,36 @@ export const updateDeviceAction = (data, id, handleClose) => {
         dispatch(setDevicesLoading(true));
         dispatch(fetchDevices());
         dispatch(getDeviceByIdAction(id));
+        handleClose();
+      })
+      .catch((err) => {
+        dispatch(setDevicesLoading(false));
+        console.log(err?.message);
+      });
+  };
+};
+
+export const createParameterAction = (data, deviceId, handleClose) => {
+  return (dispatch) => {
+    dispatch(setDevicesLoading(true));
+    createParameterService(deviceId, data)
+      .then(() => {
+        dispatch(getDeviceByIdAction(deviceId));
+        handleClose();
+      })
+      .catch((err) => {
+        dispatch(setDevicesLoading(false));
+        console.log(err?.message);
+      });
+  };
+};
+
+export const updateParameterAction = (data, id, deviceId, handleClose) => {
+  return (dispatch) => {
+    dispatch(setDevicesLoading(true));
+    updateParameterService(id, data)
+      .then(() => {
+        dispatch(getDeviceByIdAction(deviceId));
         handleClose();
       })
       .catch((err) => {

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import Styles from "./styles.module.css";
 
 /**
@@ -7,12 +7,12 @@ import Styles from "./styles.module.css";
  *
  * @property className - used to override styles
  */
-export default class extends Component {
-    render() {
-        return (
-            <span className={`${Styles.container} ${this.props.className}`}>
-                {this.props.children}
-            </span>
-        );
-    }
+export default class SpanBlock extends Component {
+  render() {
+    return (
+      <span className={`${Styles.container} ${this.props.className}`}>
+        {this.props.children}
+      </span>
+    );
+  }
 }
