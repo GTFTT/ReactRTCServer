@@ -18,20 +18,25 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "buffer": "^6.0.3",
     "connected-react-router": "^6.9.1",
     "core-js": "^3.22.4",
     "dotenv": "^10.0.0",
     "hapi-socket.io": "^1.0.5",
     "lodash": "^4.17.21",
     "mic-recorder-to-mp3": "^2.2.2",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
     "react": "^17.0.2",
+    "react-app-rewire-hot-loader": "^2.0.1",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.30.0",
     "react-hot-loader": "^4.13.0",
     "react-joystick-component": "^1.4.0",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.1",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.0",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
@@ -40,12 +45,13 @@
     "reselect": "^4.1.5",
     "rtc-ui-library": "^2.1.4",
     "web-vitals": "^1.0.1",
+    "webpack": "^5.72.0",
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -70,5 +76,10 @@
   },
   "devDependencies": {
     "gh-pages": "^3.1.0"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
