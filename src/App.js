@@ -12,10 +12,11 @@ import Routes from "./routes/Main";
 import { Navigation } from "Common";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./theme";
+import { hot } from "react-hot-loader";
 
 //own
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -34,3 +35,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default process.env.NODE_ENV === "development" ? hot(module)(App) : App;
