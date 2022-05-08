@@ -40,7 +40,6 @@ const DeviceDetails = () => {
   const [editParameter, setEditParameter] = useState(null);
 
   const [parametersModalOpen, setParametersModalOpen] = useState(false);
-
   useEffect(() => {
     if (deviceId) dispatch(getDeviceByIdAction(deviceId));
   }, [deviceId, dispatch]);
@@ -145,7 +144,7 @@ const DeviceDetails = () => {
                                 `/updateDeviceParameter/${parameter.id}`,
                                 { value: newValue }
                               ).then(() => {
-                                dispatch(fetchSmartPlug(deviceId));
+                                dispatch(getDeviceByIdAction(deviceId));
                               });
                             }}
                             type="rectangular"
