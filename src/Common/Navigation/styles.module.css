@@ -1,109 +1,112 @@
 .mainCont {
-    margin: 0;
+  margin: 0;
 }
 
 .logo {
-    height: 5vh;
-    pointer-events: none;
+  height: 5vh;
+  pointer-events: none;
 }
 
 .navigationAndHeaderPanel {
-    position: fixed;
-    width: 100%;
-    z-index: 6666;
+  position: fixed;
+  width: 100%;
+  z-index: 6666;
 }
 
 .header {
-    /* background-color: #304d4a; */
-    background: #191919;
-    min-height: 10vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: calc(10px + 2vmin);
-    color: rgb(193, 244, 255);
-    box-shadow: 0 0.6em 0.8em rgb(255, 255, 255);
+  /* background-color: #304d4a; */
+  background: #191919;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(193, 244, 255);
+  box-shadow: 0 0.6em 0.8em rgb(255, 255, 255);
+  justify-content: space-between;
 }
 
 .title {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logOutCont {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    padding-right: 1em;
+  /* display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%; */
+  padding-right: 1em;
 }
 
 .logOutButton {
-    padding: 0.2em;
-    border-radius: 0.2em;
+  padding: 0.2em;
+  border-radius: 0.2em;
 }
 
 .logOutButton:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .logOutButton:active {
-    background-color: black;
+  background-color: black;
 }
 
 .sideMenuContent {
-    width: 100%;
-    margin-top: 2em;
+  width: 100%;
+  margin-top: 2em;
 }
 
 .sideMenu {
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
-    height: 1em;
-    z-index: 1000;
-    padding-right: 2em;
-    transition: height 0.6s ease-out 0.5s, width 0.6s ease-out 1s, box-shadow 1s ease-in-out 0.8s;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 1em;
+  z-index: 1000;
+  padding-right: 2em;
+  transition: height 0.6s ease-out 0.5s, width 0.6s ease-out 1s,
+    box-shadow 1s ease-in-out 0.8s;
 }
 
 .sideMenu:hover {
-    height: 100vh;
-    width: 40vw;
-    box-shadow: 0 5em 5em rgb(0, 0, 0);
-    transition: width 0.2s ease-in, height 0.4s ease-in-out 0.2s, box-shadow 0.2s ease-in-out 0.2s;
+  height: 100vh;
+  width: 40vw;
+  box-shadow: 0 5em 5em rgb(0, 0, 0);
+  transition: width 0.2s ease-in, height 0.4s ease-in-out 0.2s,
+    box-shadow 0.2s ease-in-out 0.2s;
 }
 
 .children {
-    padding-top: 16vh;
-    padding: 16vh 20vw 0 20vw;
-    min-height: 60vh;
-    display: flex;
-    justify-content: center;
+  padding-top: 16vh;
+  padding: 16vh 20vw 0 20vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 600px) {
-    .children {
-        padding: 16vh 0.5em 0 0.5em;
-    }
+  .children {
+    padding: 16vh 0.5em 0 0.5em;
+  }
 
-    .sideMenu:hover {
-        width: 80vw;
-    }
+  .sideMenu:hover {
+    width: 80vw;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .logo {
-        animation: logo-spin infinite 20s linear;
-    }
+  .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
 @keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

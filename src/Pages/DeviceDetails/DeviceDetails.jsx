@@ -11,7 +11,6 @@ import {
   selectEditDevice,
 } from "Pages/Devices/redux/duck";
 import { COLORS } from "Pages/SmartPlugControl";
-import { fetchSmartPlug } from "Pages/SmartPlugControl/redux/duck";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";

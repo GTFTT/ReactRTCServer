@@ -4,8 +4,13 @@
 
 .deviceCode {
   width: 20vw;
+  text-align: center;
 }
 
 .createButton {
   margin-top: 10px;
+}
+
+.gridCentered {
+  text-align: center;
 }

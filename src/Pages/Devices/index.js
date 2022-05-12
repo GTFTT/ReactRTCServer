@@ -22,7 +22,7 @@ import {
 import { Button } from "rtc-ui-library";
 import NewDeviceModal from "Modals/NewDeviceModal/NewDeviceModal";
 import EditIcon from "@mui/icons-material/Edit";
-import { IconButton } from "@mui/material";
+import { Grid, IconButton } from "@mui/material";
 // import { Button } from "@mui/material";
 
 // const mapStateToProps = (state) => ({
@@ -101,15 +101,29 @@ const DevicesPage = () => {
         }}
         editDevice={editDevice}
       />
-      <button
+      {/* <button
         onClick={() => {
           const id = 3;
           history.push(`/smartPlug/${id}`);
         }}
       >
         Open plug with id 3
-      </button>
-
+      </button> */}
+      <Grid
+        container
+        sx={{ backgroundColor: "#4B4F4F", height: "35px" }}
+        alignItems="center"
+      >
+        <Grid item xs={0.5}>
+          <SpanBlock className={Styles.gridCentered}>ID</SpanBlock>
+        </Grid>
+        <Grid item xs={4} textAlign="center">
+          <SpanBlock>Code</SpanBlock>
+        </Grid>
+        <Grid item>
+          <SpanBlock>Name</SpanBlock>
+        </Grid>
+      </Grid>
       {devicesList.map((device) => (
         <Box
           sx={{
@@ -118,6 +132,7 @@ const DevicesPage = () => {
             "&:hover": {
               filter: "brightness(1.3)",
             },
+            mb: "5px",
           }}
           key={device.id}
           onClick={() => history.push(`/devices/${device.id}`)}
@@ -125,9 +140,9 @@ const DevicesPage = () => {
           <Block>
             <Box display="flex" justifyContent="space-between">
               <Box>
-                <SpanBlock>ID: {device.id}</SpanBlock>
+                <SpanBlock>{device.id}</SpanBlock>
                 <SpanBlock className={Styles.deviceCode}>
-                  Code: {device.deviceCode}
+                  {device.deviceCode}
                 </SpanBlock>
                 <span>{device.name}</span>
               </Box>
